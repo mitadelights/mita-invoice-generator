@@ -481,7 +481,7 @@
     }
 
     /* =========================
-       MOBILE
+       MOBILE (SCREEN ONLY — never applies during PDF export, see PDF MODE below)
     ========================== */
 
     @media (max-width: 900px) {
@@ -574,10 +574,68 @@
       }
     }
 
-    /* PDF MODE */
+    /* =========================
+       PDF MODE
+       Forces the invoice back to exact desktop A4 dimensions
+       right before html2canvas captures it — this overrides every
+       mobile media-query rule above regardless of the device's
+       screen width, so the downloaded PDF always matches desktop.
+    ========================== */
 
     body.generating-pdf .invoice-paper {
-      box-shadow: none;
+      box-shadow: none !important;
+      width: 210mm !important;
+      min-height: 297mm !important;
+      padding: 18mm 20mm !important;
+      transform: none !important;
+    }
+
+    body.generating-pdf .invoice-header {
+      margin-bottom: 30mm !important;
+    }
+
+    body.generating-pdf .logo-container {
+      width: auto !important;
+      height: auto !important;
+      max-width: 38mm !important;
+      max-height: 20mm !important;
+    }
+
+    body.generating-pdf .invoice-title {
+      font-size: 34px !important;
+    }
+
+    body.generating-pdf .invoice-info {
+      flex-direction: row !important;
+      gap: 0 !important;
+    }
+
+    body.generating-pdf .invoice-to-name {
+      font-size: 15px !important;
+    }
+
+    body.generating-pdf .invoice-meta {
+      min-width: 52mm !important;
+      width: auto !important;
+      font-size: 12px !important;
+    }
+
+    body.generating-pdf .items-table th,
+    body.generating-pdf .items-table td {
+      font-size: 12px !important;
+    }
+
+    body.generating-pdf .totals {
+      width: 62mm !important;
+    }
+
+    body.generating-pdf .payment-section {
+      padding-top: 16mm !important;
+    }
+
+    body.generating-pdf .invoice-footer {
+      margin: 14mm -20mm -18mm !important;
+      padding: 6mm 20mm !important;
     }
   </style>
 </head>
@@ -847,7 +905,9 @@
     let items = [
       {
         id: 1,
-        name: ""
+        name: "",
+        quantity: 1,
+        price: 0
       }
     ];
 
@@ -1287,17 +1347,17 @@
 
 
             const canvas =
-  await html2canvas(
-    invoice,
-    {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: "#ffffff",
-      windowWidth: 1024,          // paksa render pakai layout desktop, bukan mobile
-      scrollX: 0,
-      scrollY: -window.scrollY    // cegah hasil capture geser akibat scroll di HP
-    }
-  );
+              await html2canvas(
+                invoice,
+                {
+                  scale: 2,
+                  useCORS: true,
+                  backgroundColor: "#ffffff",
+                  windowWidth: 1024,          // paksa render pakai layout desktop, bukan mobile
+                  scrollX: 0,
+                  scrollY: -window.scrollY    // cegah hasil capture geser akibat scroll di HP
+                }
+              );
 
 
             const imageData =
