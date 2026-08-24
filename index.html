@@ -1333,11 +1333,14 @@
             "Generating PDF...";
 
 
+          const invoice =
+            $("invoicePaper");
+
+          const originalInlineStyle =
+            invoice.getAttribute("style");
+
+
           try {
-
-            const invoice =
-              $("invoicePaper");
-
 
             document.body
               .classList
@@ -1345,6 +1348,47 @@
                 "generating-pdf"
               );
 
+            /*
+              Paksa ukuran kertas pakai PIXEL ABSOLUT
+              (bukan mm) sebelum di-screenshot.
+
+              Kenapa: unit "mm" di CSS seharusnya selalu
+              1mm = 96/25.4px, tapi banyak mobile browser
+              (terutama webview / in-app browser) sedikit
+              meleset karena efek zoom/viewport-nya sendiri.
+              Akibatnya rasio kanvas yang ditangkap html2canvas
+              jadi tidak persis 210:297, padahal pdf.addImage()
+              tetap memaksa hasilnya jadi 210x297mm -> gepeng.
+
+              Dengan memaksa width/height pakai px absolut
+              (794x1123px = ukuran A4 pada 96dpi, standar tetap),
+              device apapun -HP, tablet, desktop- akan selalu
+              menghasilkan kanvas dengan rasio yang SAMA PERSIS.
+            */
+
+            const PDF_PX_WIDTH = 794;   // 210mm @ 96dpi
+            const PDF_PX_HEIGHT = 1123; // 297mm @ 96dpi
+
+            invoice.style.setProperty(
+              "width", PDF_PX_WIDTH + "px", "important"
+            );
+            invoice.style.setProperty(
+              "height", PDF_PX_HEIGHT + "px", "important"
+            );
+            invoice.style.setProperty(
+              "min-height", PDF_PX_HEIGHT + "px", "important"
+            );
+            invoice.style.setProperty(
+              "max-width", "none", "important"
+            );
+
+            // beri waktu browser reflow dulu sebelum discreenshot
+            // (penting di mobile, kadang style baru belum "settle")
+            await new Promise((resolve) =>
+              requestAnimationFrame(() =>
+                requestAnimationFrame(resolve)
+              )
+            );
 
             const canvas =
               await html2canvas(
@@ -1353,9 +1397,11 @@
                   scale: 2,
                   useCORS: true,
                   backgroundColor: "#ffffff",
-                  windowWidth: 1024,          // paksa render pakai layout desktop, bukan mobile
+                  windowWidth: 1200,          // pastikan media query mobile tidak aktif
+                  width: PDF_PX_WIDTH,        // crop kanvas persis ukuran A4 px
+                  height: PDF_PX_HEIGHT,
                   scrollX: 0,
-                  scrollY: -window.scrollY    // cegah hasil capture geser akibat scroll di HP
+                  scrollY: -window.scrollY
                 }
               );
 
@@ -1381,6 +1427,10 @@
               );
 
 
+            // Rasio kanvas sekarang sudah pasti 210:297
+            // (sama seperti PDF_PX_WIDTH:PDF_PX_HEIGHT),
+            // jadi aman dipaksa mengisi penuh halaman A4
+            // tanpa distorsi apapun.
             pdf.addImage(
               imageData,
               "JPEG",
@@ -1401,13 +1451,6 @@
               `invoice-${invoiceNumber}.pdf`
             );
 
-
-            document.body
-              .classList
-              .remove(
-                "generating-pdf"
-              );
-
           }
 
           catch (error) {
@@ -1421,6 +1464,21 @@
           }
 
           finally {
+
+            document.body
+              .classList
+              .remove(
+                "generating-pdf"
+              );
+
+            // kembalikan style asli invoice-paper
+            if (originalInlineStyle) {
+              invoice.setAttribute(
+                "style", originalInlineStyle
+              );
+            } else {
+              invoice.removeAttribute("style");
+            }
 
             button.disabled = false;
 
