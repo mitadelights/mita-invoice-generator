@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
-  />
+  >
 
   <title>Mita Delights - Invoice Generator</title>
 
-  <!-- Fonts -->
+  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
@@ -24,62 +24,41 @@
     rel="stylesheet"
   >
 
-  <!-- PDF -->
+  <!-- PDF LIBRARIES -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-
   <style>
-
-    /* =========================
-       ROOT
-    ========================== */
 
     :root {
       --bg: #eeeeee;
       --paper: #ffffff;
-
       --text: #1d1d1d;
       --muted: #777777;
-
       --border: #dddddd;
-
       --red: #a92320;
       --red-dark: #831916;
-
       --input-bg: #fafafa;
     }
-
-
-    /* =========================
-       RESET
-    ========================== */
 
     * {
       box-sizing: border-box;
     }
 
-
     html,
     body {
       margin: 0;
       padding: 0;
-
       min-height: 100%;
-
       background: var(--bg);
-
       color: var(--text);
-
       font-family: "Inter", sans-serif;
     }
-
 
     body {
       min-height: 100vh;
     }
-
 
     /* =========================
        APP LAYOUT
@@ -87,12 +66,9 @@
 
     .app {
       display: grid;
-
       grid-template-columns: 400px 1fr;
-
       min-height: 100vh;
     }
-
 
     /* =========================
        LEFT PANEL
@@ -100,40 +76,27 @@
 
     .panel {
       padding: 28px;
-
-      background: white;
-
-      border-right:
-        1px solid var(--border);
-
+      background: #ffffff;
+      border-right: 1px solid var(--border);
       overflow-y: auto;
     }
-
 
     .panel-header {
       margin-bottom: 28px;
     }
 
-
     .panel-header h1 {
       margin: 0;
-
       font-size: 22px;
-
       font-weight: 700;
     }
 
-
     .panel-header p {
       margin: 6px 0 0;
-
       color: var(--muted);
-
       font-size: 12px;
-
       line-height: 1.5;
     }
-
 
     /* =========================
        FORM
@@ -143,92 +106,56 @@
       margin-bottom: 28px;
     }
 
-
     .section-title {
       display: block;
-
       margin-bottom: 12px;
-
       color: var(--red);
-
       font-size: 10px;
-
       font-weight: 700;
-
       letter-spacing: 0.1em;
-
       text-transform: uppercase;
     }
-
 
     .field {
       margin-bottom: 12px;
     }
 
-
     .field label {
       display: block;
-
       margin-bottom: 5px;
-
       font-size: 12px;
-
       font-weight: 600;
     }
-
 
     input,
     textarea {
       width: 100%;
-
       padding: 10px 12px;
-
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 8px;
-
-      background:
-        var(--input-bg);
-
-      color:
-        var(--text);
-
-      font-family:
-        "Inter", sans-serif;
-
+      background: var(--input-bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
       font-size: 13px;
     }
-
 
     input:focus,
     textarea:focus {
       outline: none;
-
-      border-color:
-        var(--red);
-
-      background:
-        white;
+      border-color: var(--red);
+      background: #ffffff;
     }
-
 
     textarea {
       resize: vertical;
-
       min-height: 70px;
     }
 
-
     .row-2 {
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
-
 
     /* =========================
        ITEM CARD
@@ -236,66 +163,37 @@
 
     .item-card {
       position: relative;
-
       padding: 14px;
-
       margin-bottom: 10px;
-
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 10px;
-
       background: #fafafa;
     }
 
-
     .remove-item {
       position: absolute;
-
       top: 8px;
       right: 8px;
-
       width: 24px;
       height: 24px;
-
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 50%;
-
-      background: white;
-
-      color: #888;
-
+      background: #ffffff;
+      color: #888888;
       cursor: pointer;
     }
-
 
     .add-item {
       width: 100%;
-
       padding: 11px;
-
-      border:
-        1.5px dashed var(--red);
-
+      border: 1.5px dashed var(--red);
       border-radius: 8px;
-
-      background:
-        transparent;
-
-      color:
-        var(--red);
-
-      font-family:
-        "Inter", sans-serif;
-
+      background: transparent;
+      color: var(--red);
+      font-family: "Inter", sans-serif;
       font-weight: 600;
-
       cursor: pointer;
     }
-
 
     /* =========================
        DOWNLOAD BUTTON
@@ -303,161 +201,102 @@
 
     .download-btn {
       width: 100%;
-
       padding: 15px;
-
       border: none;
-
       border-radius: 10px;
-
-      background:
-        var(--red);
-
-      color: white;
-
-      font-family:
-        "Inter", sans-serif;
-
+      background: var(--red);
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
       font-size: 14px;
-
       font-weight: 700;
-
       cursor: pointer;
     }
 
-
     .download-btn:hover {
-      background:
-        var(--red-dark);
+      background: var(--red-dark);
     }
-
 
     .download-btn:disabled {
       opacity: 0.7;
-
       cursor: wait;
     }
 
-
     /* =========================
-       PREVIEW AREA
+       PREVIEW
     ========================== */
 
     .preview-area {
       width: 100%;
-
       padding: 40px 20px;
-
       display: flex;
-
       justify-content: center;
-
       align-items: flex-start;
-
       overflow: hidden;
     }
 
-
-    /* =========================
-       PREVIEW WRAPPER
-    ========================== */
-
     .invoice-preview-wrapper {
       position: relative;
-
       flex-shrink: 0;
     }
 
-
     /* =========================
-       A4 PAPER
+       A4 INVOICE
     ========================== */
 
     .invoice-paper {
       position: absolute;
-
       top: 0;
       left: 0;
 
       width: 210mm;
-
       height: 297mm;
 
-      background:
-        var(--paper);
+      background: var(--paper);
 
-      padding:
-        18mm 20mm;
+      padding: 18mm 20mm;
 
       display: flex;
-
       flex-direction: column;
 
-      transform-origin:
-        top left;
+      transform-origin: top left;
 
       box-shadow:
-        0 20px 50px rgba(0,0,0,0.12),
-        0 2px 8px rgba(0,0,0,0.08);
+        0 20px 50px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
-
     /* =========================
-       INVOICE HEADER
+       HEADER
     ========================== */
 
     .invoice-header {
       display: flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        flex-start;
-
-      margin-bottom:
-        12mm;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12mm;
     }
-
 
     .logo-container {
       width: 52mm;
-
       height: 32mm;
-
       display: flex;
-
-      align-items:
-        flex-start;
+      align-items: flex-start;
     }
-
 
     .logo-container img {
       width: 100%;
-
       height: 100%;
-
       object-fit: contain;
-
-      object-position:
-        left top;
-
+      object-position: left top;
       display: block;
     }
 
-
     .invoice-title {
-      font-family:
-        "Lato", sans-serif;
-
+      font-family: "Lato", sans-serif;
       font-size: 34px;
-
       font-weight: 400;
-
-      letter-spacing:
-        0.04em;
+      letter-spacing: 0.04em;
     }
-
 
     /* =========================
        INVOICE INFO
@@ -465,70 +304,39 @@
 
     .invoice-info {
       display: flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        flex-start;
-
-      padding-bottom:
-        8mm;
-
-      margin-bottom:
-        8mm;
-
-      border-bottom:
-        1px solid #222;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 8mm;
+      margin-bottom: 8mm;
+      border-bottom: 1px solid #222222;
     }
-
 
     .invoice-to {
       width: 58%;
     }
 
-
     .invoice-to-label {
       margin-bottom: 5px;
-
-      font-family:
-        Arial, sans-serif;
-
+      font-family: Arial, sans-serif;
       font-size: 12px;
-
       font-weight: 700;
     }
 
-
     .invoice-to-name {
-      font-family:
-        Arial, sans-serif;
-
+      font-family: Arial, sans-serif;
       font-size: 15px;
-
       font-weight: 700;
-
       line-height: 1.35;
     }
 
-
     .invoice-address {
       margin-top: 4px;
-
-      color:
-        var(--muted);
-
-      font-family:
-        Arial, sans-serif;
-
+      color: var(--muted);
+      font-family: Arial, sans-serif;
       font-size: 10px;
-
       line-height: 1.5;
-
-      white-space:
-        pre-line;
+      white-space: pre-line;
     }
-
 
     /* =========================
        META
@@ -536,35 +344,24 @@
 
     .invoice-meta {
       width: 42%;
-
-      font-family:
-        "Lato", sans-serif;
-
+      font-family: "Lato", sans-serif;
       font-size: 12px;
     }
 
-
     .meta-line {
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
-
       margin-bottom: 5px;
     }
-
 
     .meta-label {
       font-weight: 700;
     }
 
-
     .meta-value {
       text-align: right;
     }
-
 
     /* =========================
        ITEMS TABLE
@@ -572,73 +369,46 @@
 
     .items-table {
       width: 100%;
-
-      border-collapse:
-        collapse;
-
-      font-family:
-        "Lato", sans-serif;
-
-      margin-bottom:
-        8mm;
+      border-collapse: collapse;
+      font-family: "Lato", sans-serif;
+      margin-bottom: 8mm;
     }
-
 
     .items-table thead {
-      border-top:
-        1px solid #222;
-
-      border-bottom:
-        1px solid #222;
+      border-top: 1px solid #222222;
+      border-bottom: 1px solid #222222;
     }
 
-
     .items-table th {
-      padding:
-        8px 0;
-
+      padding: 8px 0;
       font-size: 11px;
-
       font-weight: 700;
-
       text-align: left;
     }
 
-
     .items-table td {
-      padding:
-        9px 0;
-
-      border-bottom:
-        1px solid #e5e5e5;
-
+      padding: 9px 0;
+      border-bottom: 1px solid #e5e5e5;
       font-size: 12px;
     }
-
 
     .items-table th:nth-child(2),
     .items-table td:nth-child(2) {
       width: 18%;
-
       text-align: center;
     }
-
 
     .items-table th:nth-child(3),
     .items-table td:nth-child(3) {
       width: 23%;
-
       text-align: right;
     }
-
 
     .items-table th:nth-child(4),
     .items-table td:nth-child(4) {
       width: 23%;
-
       text-align: right;
     }
-
 
     /* =========================
        TOTAL
@@ -646,43 +416,25 @@
 
     .totals {
       width: 62mm;
-
       margin-left: auto;
-
-      font-family:
-        "Lato", sans-serif;
+      font-family: "Lato", sans-serif;
     }
-
 
     .total-line {
       display: flex;
-
-      justify-content:
-        space-between;
-
-      padding:
-        6px 0;
-
-      border-top:
-        1px solid #dddddd;
-
+      justify-content: space-between;
+      padding: 6px 0;
+      border-top: 1px solid #dddddd;
       font-size: 12px;
     }
 
-
     .total-final {
       margin-top: 3px;
-
       padding-top: 9px;
-
-      border-top:
-        2px solid #222;
-
+      border-top: 2px solid #222222;
       font-size: 17px;
-
       font-weight: 700;
     }
-
 
     /* =========================
        PAYMENT
@@ -690,45 +442,28 @@
 
     .payment-section {
       margin-top: 20mm;
-
-      font-family:
-        "Inter", sans-serif;
+      font-family: "Inter", sans-serif;
     }
-
 
     .payment-title {
       margin-bottom: 7px;
-
-      color:
-        var(--red);
-
+      color: var(--red);
       font-size: 10px;
-
       font-weight: 700;
-
-      letter-spacing:
-        0.08em;
-
-      text-transform:
-        uppercase;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-
 
     .payment-bank {
       margin-bottom: 4px;
-
       font-size: 12px;
-
       font-weight: 700;
     }
 
-
     .payment-detail {
       font-size: 11px;
-
       line-height: 1.7;
     }
-
 
     /* =========================
        FOOTER
@@ -739,29 +474,19 @@
 
       margin-left: -20mm;
       margin-right: -20mm;
-
       margin-bottom: -18mm;
 
-      padding:
-        6mm 20mm;
+      padding: 6mm 20mm;
 
-      background:
-        var(--red);
+      background: var(--red);
+      color: #ffffff;
 
-      color:
-        white;
+      text-align: center;
 
-      text-align:
-        center;
-
-      font-family:
-        "Inter", sans-serif;
-
+      font-family: "Inter", sans-serif;
       font-size: 11px;
-
       font-weight: 600;
     }
-
 
     /* =========================
        RESPONSIVE
@@ -773,34 +498,25 @@
         display: block;
       }
 
-
       .panel {
         border-right: none;
-
-        border-bottom:
-          1px solid var(--border);
+        border-bottom: 1px solid var(--border);
       }
 
-
       .preview-area {
-        padding:
-          25px 10px;
+        padding: 25px 10px;
       }
 
     }
 
-
     @media (max-width: 500px) {
 
       .panel {
-        padding:
-          20px 16px;
+        padding: 20px 16px;
       }
 
-
       .row-2 {
-        grid-template-columns:
-          1fr;
+        grid-template-columns: 1fr;
       }
 
     }
@@ -808,30 +524,23 @@
   </style>
 </head>
 
-
 <body>
-
 
   <div class="app">
 
-
     <!-- =====================
-         CONTROL PANEL
+         PANEL
     ====================== -->
 
     <aside class="panel">
 
-
       <div class="panel-header">
-
         <h1>Invoice Generator</h1>
 
         <p>
           Isi data invoice dan download sebagai PDF.
         </p>
-
       </div>
-
 
       <!-- DETAIL INVOICE -->
 
@@ -841,73 +550,49 @@
           Detail Invoice
         </span>
 
-
         <div class="row-2">
 
-
           <div class="field">
-
-            <label>
-              Invoice Number
-            </label>
+            <label>Invoice Number</label>
 
             <input
               id="invoiceNumber"
               type="text"
               placeholder="Invoice number"
             >
-
           </div>
 
-
           <div class="field">
-
-            <label>
-              Date
-            </label>
+            <label>Date</label>
 
             <input
               id="invoiceDate"
               type="date"
             >
-
           </div>
-
 
         </div>
 
-
         <div class="field">
-
-          <label>
-            Invoice To
-          </label>
+          <label>Invoice To</label>
 
           <input
             id="billTo"
             type="text"
             placeholder="Nama customer"
           >
-
         </div>
 
-
         <div class="field">
-
-          <label>
-            Address
-          </label>
+          <label>Address</label>
 
           <textarea
             id="address"
             placeholder="Alamat customer"
           ></textarea>
-
         </div>
 
-
       </div>
-
 
       <!-- ITEMS -->
 
@@ -917,9 +602,7 @@
           Items
         </span>
 
-
         <div id="itemsContainer"></div>
-
 
         <button
           class="add-item"
@@ -929,9 +612,24 @@
           + Tambah Item
         </button>
 
+        <div
+          class="field"
+          style="margin-top: 16px;"
+        >
+
+          <label>Ongkir</label>
+
+          <input
+            id="shippingCost"
+            type="number"
+            min="0"
+            value="0"
+            placeholder="Masukkan ongkir"
+          >
+
+        </div>
 
       </div>
-
 
       <!-- PAYMENT -->
 
@@ -941,79 +639,52 @@
           Payment Method
         </span>
 
-
         <div class="field">
-
-          <label>
-            Bank Name
-          </label>
+          <label>Bank Name</label>
 
           <input
             id="bankName"
             value="Bank Mandiri"
           >
-
         </div>
 
-
         <div class="field">
-
-          <label>
-            Account Name
-          </label>
+          <label>Account Name</label>
 
           <input
             id="accountName"
             value="Mima Utami"
           >
-
         </div>
 
-
         <div class="field">
-
-          <label>
-            Account Number
-          </label>
+          <label>Account Number</label>
 
           <input
             id="accountNumber"
             value="1010009753359"
           >
-
         </div>
 
-
         <div class="field">
-
-          <label>
-            Contact Number
-          </label>
+          <label>Contact Number</label>
 
           <input
             id="phone"
             value="+628568358985"
           >
-
         </div>
 
-
         <div class="field">
-
-          <label>
-            Contact Name
-          </label>
+          <label>Contact Name</label>
 
           <input
             id="contactName"
             value="Mima Utami"
           >
-
         </div>
 
-
       </div>
-
 
       <button
         class="download-btn"
@@ -1023,34 +694,27 @@
         Download PDF
       </button>
 
-
     </aside>
 
-
-
     <!-- =====================
-         PREVIEW AREA
+         PREVIEW
     ====================== -->
 
     <main class="preview-area">
-
 
       <div
         class="invoice-preview-wrapper"
         id="invoicePreviewWrapper"
       >
 
-
         <div
           class="invoice-paper"
           id="invoicePaper"
         >
 
-
           <!-- HEADER -->
 
           <div class="invoice-header">
-
 
             <div class="logo-container">
 
@@ -1061,27 +725,21 @@
 
             </div>
 
-
             <div class="invoice-title">
               INVOICE
             </div>
 
-
           </div>
-
 
           <!-- INVOICE INFO -->
 
           <div class="invoice-info">
 
-
             <div class="invoice-to">
-
 
               <div class="invoice-to-label">
                 Invoice to:
               </div>
-
 
               <div
                 class="invoice-to-name"
@@ -1090,18 +748,14 @@
                 -
               </div>
 
-
               <div
                 class="invoice-address"
                 id="previewAddress"
               ></div>
 
-
             </div>
 
-
             <div class="invoice-meta">
-
 
               <div class="meta-line">
 
@@ -1118,7 +772,6 @@
 
               </div>
 
-
               <div class="meta-line">
 
                 <span class="meta-label">
@@ -1134,47 +787,34 @@
 
               </div>
 
-
             </div>
 
-
           </div>
-
 
           <!-- TABLE -->
 
           <table class="items-table">
 
-
             <thead>
 
               <tr>
-
                 <th>Item</th>
-
                 <th>Quantity</th>
-
                 <th>Unit Price</th>
-
                 <th>Total</th>
-
               </tr>
 
             </thead>
-
 
             <tbody
               id="previewItems"
             ></tbody>
 
-
           </table>
-
 
           <!-- TOTAL -->
 
           <div class="totals">
-
 
             <div class="total-line">
 
@@ -1188,13 +828,19 @@
 
             </div>
 
+            <div class="total-line">
 
-            <div
-              class="
-                total-line
-                total-final
-              "
-            >
+              <span>
+                Ongkir
+              </span>
+
+              <span id="previewShipping">
+                Rp0
+              </span>
+
+            </div>
+
+            <div class="total-line total-final">
 
               <span>
                 Total
@@ -1206,19 +852,15 @@
 
             </div>
 
-
           </div>
-
 
           <!-- PAYMENT -->
 
           <div class="payment-section">
 
-
             <div class="payment-title">
               Payment Method
             </div>
-
 
             <div
               class="payment-bank"
@@ -1227,14 +869,12 @@
               Bank Mandiri
             </div>
 
-
             <div
               class="payment-detail"
               id="previewAccountName"
             >
               Account Name : Mima Utami
             </div>
-
 
             <div
               class="payment-detail"
@@ -1243,9 +883,7 @@
               Account No : 1010009753359
             </div>
 
-
           </div>
-
 
           <!-- FOOTER -->
 
@@ -1257,19 +895,13 @@
 
           </div>
 
-
         </div>
-
 
       </div>
 
-
     </main>
 
-
   </div>
-
-
 
   <script>
 
@@ -1280,16 +912,13 @@
     const $ = (id) =>
       document.getElementById(id);
 
-
     /* =========================
        ITEMS
-       DEFAULT KOSONG
     ========================== */
 
     let items = [];
 
     let itemId = 1;
-
 
     /* =========================
        FORMAT RUPIAH
@@ -1298,12 +927,11 @@
     function formatRupiah(number) {
 
       return "Rp" +
-        Math
-          .round(Number(number) || 0)
-          .toLocaleString("id-ID");
+        Math.round(
+          Number(number) || 0
+        ).toLocaleString("id-ID");
 
     }
-
 
     /* =========================
        FORMAT DATE
@@ -1315,33 +943,27 @@
         return "-";
       }
 
-
       const date =
         new Date(
           dateString + "T00:00:00"
         );
-
 
       const day =
         String(
           date.getDate()
         ).padStart(2, "0");
 
-
       const month =
         String(
           date.getMonth() + 1
         ).padStart(2, "0");
 
-
       const year =
         date.getFullYear();
-
 
       return `${day}/${month}/${year}`;
 
     }
-
 
     /* =========================
        PREVIEW SCALE
@@ -1352,51 +974,40 @@
       const invoice =
         $("invoicePaper");
 
-
       const wrapper =
         $("invoicePreviewWrapper");
-
 
       const previewArea =
         document.querySelector(
           ".preview-area"
         );
 
-
       const invoiceWidth =
         invoice.offsetWidth;
-
 
       const invoiceHeight =
         invoice.offsetHeight;
 
-
       const availableWidth =
         previewArea.clientWidth - 20;
-
 
       let scale =
         availableWidth /
         invoiceWidth;
 
-
       scale =
         Math.min(scale, 1);
-
 
       wrapper.style.width =
         `${invoiceWidth * scale}px`;
 
-
       wrapper.style.height =
         `${invoiceHeight * scale}px`;
-
 
       invoice.style.transform =
         `scale(${scale})`;
 
     }
-
 
     /* =========================
        RENDER ITEM FORM
@@ -1407,20 +1018,15 @@
       const container =
         $("itemsContainer");
 
-
       container.innerHTML = "";
 
-
       items.forEach((item) => {
-
 
         const card =
           document.createElement("div");
 
-
         card.className =
           "item-card";
-
 
         card.innerHTML = `
 
@@ -1432,12 +1038,9 @@
             ×
           </button>
 
-
           <div class="field">
 
-            <label>
-              Item Name
-            </label>
+            <label>Item Name</label>
 
             <input
               type="text"
@@ -1448,15 +1051,11 @@
 
           </div>
 
-
           <div class="row-2">
-
 
             <div class="field">
 
-              <label>
-                Quantity
-              </label>
+              <label>Quantity</label>
 
               <input
                 type="number"
@@ -1468,12 +1067,9 @@
 
             </div>
 
-
             <div class="field">
 
-              <label>
-                Unit Price
-              </label>
+              <label>Unit Price</label>
 
               <input
                 type="number"
@@ -1485,47 +1081,35 @@
 
             </div>
 
-
           </div>
-
         `;
-
 
         container.appendChild(card);
 
       });
 
-
       document
         .querySelectorAll("[data-field]")
         .forEach((input) => {
 
-
           input.addEventListener(
             "input",
             function () {
-
 
               const id =
                 Number(
                   this.dataset.id
                 );
 
-
               const field =
                 this.dataset.field;
-
 
               const item =
                 items.find(
                   item => item.id === id
                 );
 
-
-              if (!item) {
-                return;
-              }
-
+              if (!item) return;
 
               if (field === "name") {
 
@@ -1539,7 +1123,6 @@
 
               }
 
-
               updatePreview();
 
             }
@@ -1547,28 +1130,23 @@
 
         });
 
-
       document
         .querySelectorAll(".remove-item")
         .forEach((button) => {
 
-
           button.addEventListener(
             "click",
             function () {
-
 
               const id =
                 Number(
                   this.dataset.id
                 );
 
-
               items =
                 items.filter(
                   item => item.id !== id
                 );
-
 
               renderItemForm();
 
@@ -1581,7 +1159,6 @@
 
     }
 
-
     /* =========================
        ADD ITEM
     ========================== */
@@ -1591,19 +1168,14 @@
         "click",
         function () {
 
-
           items.push({
 
             id: itemId++,
-
             name: "",
-
             quantity: 1,
-
             price: 0
 
           });
-
 
           renderItemForm();
 
@@ -1612,18 +1184,15 @@
         }
       );
 
-
     /* =========================
        UPDATE PREVIEW
     ========================== */
 
     function updatePreview() {
 
-
       $("previewInvoiceNumber")
         .textContent =
           $("invoiceNumber").value || "-";
-
 
       $("previewDate")
         .textContent =
@@ -1631,21 +1200,17 @@
             $("invoiceDate").value
           );
 
-
       $("previewBillTo")
         .textContent =
           $("billTo").value || "-";
-
 
       $("previewAddress")
         .textContent =
           $("address").value;
 
-
       $("previewBank")
         .textContent =
           $("bankName").value || "-";
-
 
       $("previewAccountName")
         .textContent =
@@ -1654,7 +1219,6 @@
             $("accountName").value || "-"
           );
 
-
       $("previewAccountNumber")
         .textContent =
           "Account No : " +
@@ -1662,91 +1226,73 @@
             $("accountNumber").value || "-"
           );
 
-
       const phone =
         $("phone").value;
-
 
       const contactName =
         $("contactName").value;
 
-
       $("previewPhone")
         .textContent =
-
           phone +
-
           (
             contactName
               ? ` (${contactName})`
               : ""
           );
 
-
       /* TABLE */
 
       const tbody =
         $("previewItems");
 
-
       tbody.innerHTML = "";
-
 
       let subtotal = 0;
 
-
       items.forEach((item) => {
 
-
         const total =
-
           (item.quantity || 0) *
-
           (item.price || 0);
 
-
         subtotal += total;
-
 
         const row =
           document.createElement("tr");
 
-
         row.innerHTML = `
-
-          <td>
-            ${item.name || "-"}
-          </td>
-
-          <td>
-            ${item.quantity || 0}
-          </td>
-
-          <td>
-            ${formatRupiah(item.price)}
-          </td>
-
-          <td>
-            ${formatRupiah(total)}
-          </td>
-
+          <td>${item.name || "-"}</td>
+          <td>${item.quantity || 0}</td>
+          <td>${formatRupiah(item.price)}</td>
+          <td>${formatRupiah(total)}</td>
         `;
-
 
         tbody.appendChild(row);
 
       });
 
+      /* ONGKIR */
+
+      const shippingCost =
+        Number(
+          $("shippingCost").value
+        ) || 0;
+
+      const grandTotal =
+        subtotal + shippingCost;
 
       $("previewSubtotal")
         .textContent =
           formatRupiah(subtotal);
 
+      $("previewShipping")
+        .textContent =
+          formatRupiah(shippingCost);
 
       $("previewTotal")
         .textContent =
-          formatRupiah(subtotal);
-
+          formatRupiah(grandTotal);
 
       requestAnimationFrame(
         updatePreviewScale
@@ -1754,31 +1300,21 @@
 
     }
 
-
     /* =========================
        FORM LISTENERS
     ========================== */
 
     [
-
       "invoiceNumber",
-
       "invoiceDate",
-
       "billTo",
-
       "address",
-
+      "shippingCost",
       "bankName",
-
       "accountName",
-
       "accountNumber",
-
       "phone",
-
       "contactName"
-
     ]
       .forEach((id) => {
 
@@ -1790,7 +1326,6 @@
 
       });
 
-
     /* =========================
        DOWNLOAD PDF
     ========================== */
@@ -1800,141 +1335,94 @@
         "click",
         async function () {
 
-
-          const button =
-            this;
-
+          const button = this;
 
           const originalText =
             button.textContent;
-
 
           button.disabled = true;
 
           button.textContent =
             "Generating PDF...";
 
-
           try {
-
 
             const invoice =
               $("invoicePaper");
 
-
             const originalTransform =
               invoice.style.transform;
-
 
             /* Hapus scale preview */
 
             invoice.style.transform =
               "none";
 
-
             await new Promise(
               resolve =>
                 setTimeout(resolve, 200)
             );
 
-
             const canvas =
               await html2canvas(
                 invoice,
                 {
-
                   scale: 2,
-
                   useCORS: true,
-
-                  backgroundColor:
-                    "#ffffff",
-
-                  width:
-                    invoice.offsetWidth,
-
-                  height:
-                    invoice.offsetHeight
-
+                  backgroundColor: "#ffffff",
+                  width: invoice.offsetWidth,
+                  height: invoice.offsetHeight
                 }
               );
-
 
             /* Kembalikan preview */
 
             invoice.style.transform =
               originalTransform;
 
-
             const imageData =
-              canvas.toDataURL(
-                "image/png"
-              );
-
+              canvas.toDataURL("image/png");
 
             const {
               jsPDF
             } =
               window.jspdf;
 
-
             const pdf =
               new jsPDF({
-
-                orientation:
-                  "portrait",
-
-                unit:
-                  "mm",
-
-                format:
-                  "a4"
-
+                orientation: "portrait",
+                unit: "mm",
+                format: "a4"
               });
 
-
             pdf.addImage(
-
               imageData,
-
               "PNG",
-
               0,
               0,
-
               210,
               297
-
             );
-
 
             const invoiceNumber =
               $("invoiceNumber").value ||
               "invoice";
 
-
             pdf.save(
               `invoice-${invoiceNumber}.pdf`
             );
 
-
           } catch (error) {
 
-
             console.error(error);
-
 
             alert(
               "Terjadi kesalahan saat membuat PDF."
             );
 
-
           } finally {
 
-
-            button.disabled =
-              false;
-
+            button.disabled = false;
 
             button.textContent =
               originalText;
@@ -1944,7 +1432,6 @@
         }
       );
 
-
     /* =========================
        INITIAL LOAD
     ========================== */
@@ -1953,19 +1440,15 @@
 
     updatePreview();
 
-
     window.addEventListener(
       "load",
       () => {
-
         setTimeout(
           updatePreviewScale,
           100
         );
-
       }
     );
-
 
     window.addEventListener(
       "resize",
@@ -1973,7 +1456,6 @@
     );
 
   </script>
-
 
 </body>
 </html>
