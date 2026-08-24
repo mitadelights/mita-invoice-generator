@@ -1287,15 +1287,17 @@
 
 
             const canvas =
-              await html2canvas(
-                invoice,
-                {
-                  scale: 2,
-                  useCORS: true,
-                  backgroundColor:
-                    "#ffffff"
-                }
-              );
+  await html2canvas(
+    invoice,
+    {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      windowWidth: 1024,          // paksa render pakai layout desktop, bukan mobile
+      scrollX: 0,
+      scrollY: -window.scrollY    // cegah hasil capture geser akibat scroll di HP
+    }
+  );
 
 
             const imageData =
