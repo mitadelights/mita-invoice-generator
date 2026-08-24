@@ -10,8 +10,7 @@
 
   <title>Mita Delights - Invoice Generator</title>
 
-  <!-- GOOGLE FONTS -->
-
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
@@ -25,8 +24,7 @@
     rel="stylesheet"
   >
 
-  <!-- PDF LIBRARIES -->
-
+  <!-- PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -39,7 +37,6 @@
     ========================== */
 
     :root {
-
       --bg: #eeeeee;
       --paper: #ffffff;
 
@@ -52,7 +49,6 @@
       --red-dark: #831916;
 
       --input-bg: #fafafa;
-
     }
 
 
@@ -67,7 +63,6 @@
 
     html,
     body {
-
       margin: 0;
       padding: 0;
 
@@ -78,7 +73,6 @@
       color: var(--text);
 
       font-family: "Inter", sans-serif;
-
     }
 
 
@@ -92,13 +86,11 @@
     ========================== */
 
     .app {
-
       display: grid;
 
       grid-template-columns: 400px 1fr;
 
       min-height: 100vh;
-
     }
 
 
@@ -107,7 +99,6 @@
     ========================== */
 
     .panel {
-
       padding: 28px;
 
       background: white;
@@ -116,30 +107,24 @@
         1px solid var(--border);
 
       overflow-y: auto;
-
     }
 
 
     .panel-header {
-
       margin-bottom: 28px;
-
     }
 
 
     .panel-header h1 {
-
       margin: 0;
 
       font-size: 22px;
 
       font-weight: 700;
-
     }
 
 
     .panel-header p {
-
       margin: 6px 0 0;
 
       color: var(--muted);
@@ -147,7 +132,6 @@
       font-size: 12px;
 
       line-height: 1.5;
-
     }
 
 
@@ -156,14 +140,11 @@
     ========================== */
 
     .section {
-
       margin-bottom: 28px;
-
     }
 
 
     .section-title {
-
       display: block;
 
       margin-bottom: 12px;
@@ -177,19 +158,15 @@
       letter-spacing: 0.1em;
 
       text-transform: uppercase;
-
     }
 
 
     .field {
-
       margin-bottom: 12px;
-
     }
 
 
     .field label {
-
       display: block;
 
       margin-bottom: 5px;
@@ -197,13 +174,11 @@
       font-size: 12px;
 
       font-weight: 600;
-
     }
 
 
     input,
     textarea {
-
       width: 100%;
 
       padding: 10px 12px;
@@ -223,13 +198,11 @@
         "Inter", sans-serif;
 
       font-size: 13px;
-
     }
 
 
     input:focus,
     textarea:focus {
-
       outline: none;
 
       border-color:
@@ -237,28 +210,23 @@
 
       background:
         white;
-
     }
 
 
     textarea {
-
       resize: vertical;
 
       min-height: 70px;
-
     }
 
 
     .row-2 {
-
       display: grid;
 
       grid-template-columns:
         1fr 1fr;
 
       gap: 10px;
-
     }
 
 
@@ -267,7 +235,6 @@
     ========================== */
 
     .item-card {
-
       position: relative;
 
       padding: 14px;
@@ -280,12 +247,10 @@
       border-radius: 10px;
 
       background: #fafafa;
-
     }
 
 
     .remove-item {
-
       position: absolute;
 
       top: 8px;
@@ -304,12 +269,10 @@
       color: #888;
 
       cursor: pointer;
-
     }
 
 
     .add-item {
-
       width: 100%;
 
       padding: 11px;
@@ -331,7 +294,6 @@
       font-weight: 600;
 
       cursor: pointer;
-
     }
 
 
@@ -340,7 +302,6 @@
     ========================== */
 
     .download-btn {
-
       width: 100%;
 
       padding: 15px;
@@ -362,24 +323,19 @@
       font-weight: 700;
 
       cursor: pointer;
-
     }
 
 
     .download-btn:hover {
-
       background:
         var(--red-dark);
-
     }
 
 
     .download-btn:disabled {
-
       opacity: 0.7;
 
       cursor: wait;
-
     }
 
 
@@ -388,7 +344,6 @@
     ========================== */
 
     .preview-area {
-
       width: 100%;
 
       padding: 40px 20px;
@@ -400,37 +355,25 @@
       align-items: flex-start;
 
       overflow: hidden;
-
-    }
-
-
-    /*
-      WRAPPER HANYA UNTUK
-      UKURAN PREVIEW.
-
-      INVOICE ASLI TIDAK
-      BERUBAH.
-    */
-
-    .invoice-preview-wrapper {
-
-      position: relative;
-
-      flex-shrink: 0;
-
     }
 
 
     /* =========================
-       A4 INVOICE
+       PREVIEW WRAPPER
+    ========================== */
 
-       INI UKURAN ASLI.
-       TIDAK BERUBAH
-       DI HP ATAU DESKTOP.
+    .invoice-preview-wrapper {
+      position: relative;
+
+      flex-shrink: 0;
+    }
+
+
+    /* =========================
+       A4 PAPER
     ========================== */
 
     .invoice-paper {
-
       position: absolute;
 
       top: 0;
@@ -454,13 +397,8 @@
         top left;
 
       box-shadow:
-
-        0 20px 50px
-        rgba(0,0,0,0.12),
-
-        0 2px 8px
-        rgba(0,0,0,0.08);
-
+        0 20px 50px rgba(0,0,0,0.12),
+        0 2px 8px rgba(0,0,0,0.08);
     }
 
 
@@ -469,7 +407,6 @@
     ========================== */
 
     .invoice-header {
-
       display: flex;
 
       justify-content:
@@ -480,12 +417,10 @@
 
       margin-bottom:
         12mm;
-
     }
 
 
     .logo-container {
-
       width: 52mm;
 
       height: 32mm;
@@ -494,12 +429,10 @@
 
       align-items:
         flex-start;
-
     }
 
 
     .logo-container img {
-
       width: 100%;
 
       height: 100%;
@@ -509,11 +442,11 @@
       object-position:
         left top;
 
+      display: block;
     }
 
 
     .invoice-title {
-
       font-family:
         "Lato", sans-serif;
 
@@ -523,16 +456,14 @@
 
       letter-spacing:
         0.04em;
-
     }
 
 
     /* =========================
-       INVOICE INFORMATION
+       INVOICE INFO
     ========================== */
 
     .invoice-info {
-
       display: flex;
 
       justify-content:
@@ -549,19 +480,15 @@
 
       border-bottom:
         1px solid #222;
-
     }
 
 
     .invoice-to {
-
       width: 58%;
-
     }
 
 
     .invoice-to-label {
-
       margin-bottom: 5px;
 
       font-family:
@@ -570,12 +497,10 @@
       font-size: 12px;
 
       font-weight: 700;
-
     }
 
 
     .invoice-to-name {
-
       font-family:
         Arial, sans-serif;
 
@@ -584,12 +509,10 @@
       font-weight: 700;
 
       line-height: 1.35;
-
     }
 
 
     .invoice-address {
-
       margin-top: 4px;
 
       color:
@@ -604,7 +527,6 @@
 
       white-space:
         pre-line;
-
     }
 
 
@@ -613,19 +535,16 @@
     ========================== */
 
     .invoice-meta {
-
       width: 42%;
 
       font-family:
         "Lato", sans-serif;
 
       font-size: 12px;
-
     }
 
 
     .meta-line {
-
       display: grid;
 
       grid-template-columns:
@@ -634,30 +553,24 @@
       gap: 10px;
 
       margin-bottom: 5px;
-
     }
 
 
     .meta-label {
-
       font-weight: 700;
-
     }
 
 
     .meta-value {
-
       text-align: right;
-
     }
 
 
     /* =========================
-       TABLE
+       ITEMS TABLE
     ========================== */
 
     .items-table {
-
       width: 100%;
 
       border-collapse:
@@ -668,23 +581,19 @@
 
       margin-bottom:
         8mm;
-
     }
 
 
     .items-table thead {
-
       border-top:
         1px solid #222;
 
       border-bottom:
         1px solid #222;
-
     }
 
 
     .items-table th {
-
       padding:
         8px 0;
 
@@ -693,12 +602,10 @@
       font-weight: 700;
 
       text-align: left;
-
     }
 
 
     .items-table td {
-
       padding:
         9px 0;
 
@@ -706,58 +613,48 @@
         1px solid #e5e5e5;
 
       font-size: 12px;
-
     }
 
 
     .items-table th:nth-child(2),
     .items-table td:nth-child(2) {
-
       width: 18%;
 
       text-align: center;
-
     }
 
 
     .items-table th:nth-child(3),
     .items-table td:nth-child(3) {
-
       width: 23%;
 
       text-align: right;
-
     }
 
 
     .items-table th:nth-child(4),
     .items-table td:nth-child(4) {
-
       width: 23%;
 
       text-align: right;
-
     }
 
 
     /* =========================
-       TOTALS
+       TOTAL
     ========================== */
 
     .totals {
-
       width: 62mm;
 
       margin-left: auto;
 
       font-family:
         "Lato", sans-serif;
-
     }
 
 
     .total-line {
-
       display: flex;
 
       justify-content:
@@ -770,12 +667,10 @@
         1px solid #dddddd;
 
       font-size: 12px;
-
     }
 
 
     .total-final {
-
       margin-top: 3px;
 
       padding-top: 9px;
@@ -786,34 +681,22 @@
       font-size: 17px;
 
       font-weight: 700;
-
     }
 
 
     /* =========================
        PAYMENT
-
-       TIDAK PAKAI
-       margin-top: auto
-
-       SUPAYA TIDAK TERLALU
-       JAUH KE BAWAH.
     ========================== */
 
     .payment-section {
-
       margin-top: 20mm;
-
-      padding-top: 0;
 
       font-family:
         "Inter", sans-serif;
-
     }
 
 
     .payment-title {
-
       margin-bottom: 7px;
 
       color:
@@ -828,27 +711,22 @@
 
       text-transform:
         uppercase;
-
     }
 
 
     .payment-bank {
-
       margin-bottom: 4px;
 
       font-size: 12px;
 
       font-weight: 700;
-
     }
 
 
     .payment-detail {
-
       font-size: 11px;
 
       line-height: 1.7;
-
     }
 
 
@@ -857,7 +735,6 @@
     ========================== */
 
     .invoice-footer {
-
       margin-top: auto;
 
       margin-left: -20mm;
@@ -883,38 +760,31 @@
       font-size: 11px;
 
       font-weight: 600;
-
     }
 
 
     /* =========================
-       MOBILE
+       RESPONSIVE
     ========================== */
 
     @media (max-width: 900px) {
 
       .app {
-
         display: block;
-
       }
 
 
       .panel {
-
         border-right: none;
 
         border-bottom:
           1px solid var(--border);
-
       }
 
 
       .preview-area {
-
         padding:
           25px 10px;
-
       }
 
     }
@@ -923,18 +793,14 @@
     @media (max-width: 500px) {
 
       .panel {
-
         padding:
           20px 16px;
-
       }
 
 
       .row-2 {
-
         grid-template-columns:
           1fr;
-
       }
 
     }
@@ -958,16 +824,13 @@
 
       <div class="panel-header">
 
-        <h1>
-          Invoice Generator
-        </h1>
+        <h1>Invoice Generator</h1>
 
         <p>
           Isi data invoice dan download sebagai PDF.
         </p>
 
       </div>
-
 
 
       <!-- DETAIL INVOICE -->
@@ -991,11 +854,10 @@
             <input
               id="invoiceNumber"
               type="text"
-              value="124"
+              placeholder="Invoice number"
             >
 
           </div>
-
 
 
           <div class="field">
@@ -1015,7 +877,6 @@
         </div>
 
 
-
         <div class="field">
 
           <label>
@@ -1029,7 +890,6 @@
           >
 
         </div>
-
 
 
         <div class="field">
@@ -1047,7 +907,6 @@
 
 
       </div>
-
 
 
       <!-- ITEMS -->
@@ -1074,7 +933,6 @@
       </div>
 
 
-
       <!-- PAYMENT -->
 
       <div class="section">
@@ -1082,7 +940,6 @@
         <span class="section-title">
           Payment Method
         </span>
-
 
 
         <div class="field">
@@ -1099,7 +956,6 @@
         </div>
 
 
-
         <div class="field">
 
           <label>
@@ -1112,7 +968,6 @@
           >
 
         </div>
-
 
 
         <div class="field">
@@ -1129,7 +984,6 @@
         </div>
 
 
-
         <div class="field">
 
           <label>
@@ -1142,7 +996,6 @@
           >
 
         </div>
-
 
 
         <div class="field">
@@ -1162,7 +1015,6 @@
       </div>
 
 
-
       <button
         class="download-btn"
         id="downloadBtn"
@@ -1177,12 +1029,10 @@
 
 
     <!-- =====================
-         PREVIEW
+         PREVIEW AREA
     ====================== -->
 
-    <main
-      class="preview-area"
-    >
+    <main class="preview-area">
 
 
       <div
@@ -1190,8 +1040,6 @@
         id="invoicePreviewWrapper"
       >
 
-
-        <!-- A4 ASLI -->
 
         <div
           class="invoice-paper"
@@ -1201,27 +1049,20 @@
 
           <!-- HEADER -->
 
-          <div
-            class="invoice-header"
-          >
+          <div class="invoice-header">
 
 
-            <div
-              class="logo-container"
-            >
+            <div class="logo-container">
 
               <img
-                src="mita.jpeg"
+                src="./assets/mita.jpeg"
                 alt="Mita Delights"
               >
 
             </div>
 
 
-
-            <div
-              class="invoice-title"
-            >
+            <div class="invoice-title">
               INVOICE
             </div>
 
@@ -1229,22 +1070,15 @@
           </div>
 
 
+          <!-- INVOICE INFO -->
 
-          <!-- INFO -->
-
-          <div
-            class="invoice-info"
-          >
+          <div class="invoice-info">
 
 
-            <div
-              class="invoice-to"
-            >
+            <div class="invoice-to">
 
 
-              <div
-                class="invoice-to-label"
-              >
+              <div class="invoice-to-label">
                 Invoice to:
               </div>
 
@@ -1266,19 +1100,12 @@
             </div>
 
 
-
-            <div
-              class="invoice-meta"
-            >
+            <div class="invoice-meta">
 
 
-              <div
-                class="meta-line"
-              >
+              <div class="meta-line">
 
-                <span
-                  class="meta-label"
-                >
+                <span class="meta-label">
                   Invoice#
                 </span>
 
@@ -1286,20 +1113,15 @@
                   class="meta-value"
                   id="previewInvoiceNumber"
                 >
-                  124
+                  -
                 </span>
 
               </div>
 
 
+              <div class="meta-line">
 
-              <div
-                class="meta-line"
-              >
-
-                <span
-                  class="meta-label"
-                >
+                <span class="meta-label">
                   Date
                 </span>
 
@@ -1319,38 +1141,26 @@
           </div>
 
 
-
           <!-- TABLE -->
 
-          <table
-            class="items-table"
-          >
+          <table class="items-table">
 
 
             <thead>
 
               <tr>
 
-                <th>
-                  Item
-                </th>
+                <th>Item</th>
 
-                <th>
-                  Quantity
-                </th>
+                <th>Quantity</th>
 
-                <th>
-                  Unit Price
-                </th>
+                <th>Unit Price</th>
 
-                <th>
-                  Total
-                </th>
+                <th>Total</th>
 
               </tr>
 
             </thead>
-
 
 
             <tbody
@@ -1361,30 +1171,22 @@
           </table>
 
 
-
           <!-- TOTAL -->
 
-          <div
-            class="totals"
-          >
+          <div class="totals">
 
 
-            <div
-              class="total-line"
-            >
+            <div class="total-line">
 
               <span>
                 Subtotal
               </span>
 
-              <span
-                id="previewSubtotal"
-              >
+              <span id="previewSubtotal">
                 Rp0
               </span>
 
             </div>
-
 
 
             <div
@@ -1398,9 +1200,7 @@
                 Total
               </span>
 
-              <span
-                id="previewTotal"
-              >
+              <span id="previewTotal">
                 Rp0
               </span>
 
@@ -1410,20 +1210,14 @@
           </div>
 
 
-
           <!-- PAYMENT -->
 
-          <div
-            class="payment-section"
-          >
+          <div class="payment-section">
 
 
-            <div
-              class="payment-title"
-            >
+            <div class="payment-title">
               Payment Method
             </div>
-
 
 
             <div
@@ -1434,33 +1228,32 @@
             </div>
 
 
-
             <div
               class="payment-detail"
               id="previewAccountName"
-            ></div>
-
+            >
+              Account Name : Mima Utami
+            </div>
 
 
             <div
               class="payment-detail"
               id="previewAccountNumber"
-            ></div>
+            >
+              Account No : 1010009753359
+            </div>
 
 
           </div>
 
 
-
           <!-- FOOTER -->
 
-          <div
-            class="invoice-footer"
-          >
+          <div class="invoice-footer">
 
-            <span
-              id="previewPhone"
-            ></span>
+            <span id="previewPhone">
+              +628568358985 (Mima Utami)
+            </span>
 
           </div>
 
@@ -1488,25 +1281,14 @@
       document.getElementById(id);
 
 
-
     /* =========================
-       ITEMS DATA
+       ITEMS
+       DEFAULT KOSONG
     ========================== */
 
-    let items = [
+    let items = [];
 
-      {
-        id: 1,
-        name: "",
-        quantity: 1,
-        price: 0
-      }
-
-    ];
-
-
-    let itemId = 2;
-
+    let itemId = 1;
 
 
     /* =========================
@@ -1517,24 +1299,17 @@
 
       return "Rp" +
         Math
-          .round(
-            Number(number) || 0
-          )
-          .toLocaleString(
-            "id-ID"
-          );
+          .round(Number(number) || 0)
+          .toLocaleString("id-ID");
 
     }
-
 
 
     /* =========================
        FORMAT DATE
     ========================== */
 
-    function formatDate(
-      dateString
-    ) {
+    function formatDate(dateString) {
 
       if (!dateString) {
         return "-";
@@ -1543,29 +1318,20 @@
 
       const date =
         new Date(
-          dateString +
-          "T00:00:00"
+          dateString + "T00:00:00"
         );
 
 
       const day =
         String(
           date.getDate()
-        )
-        .padStart(
-          2,
-          "0"
-        );
+        ).padStart(2, "0");
 
 
       const month =
         String(
           date.getMonth() + 1
-        )
-        .padStart(
-          2,
-          "0"
-        );
+        ).padStart(2, "0");
 
 
       const year =
@@ -1577,25 +1343,8 @@
     }
 
 
-
-    /* =========================
-       DEFAULT DATE
-    ========================== */
-
-    $("invoiceDate").value =
-      new Date()
-        .toISOString()
-        .split("T")[0];
-
-
-
     /* =========================
        PREVIEW SCALE
-
-       INVOICE ASLI TETAP A4.
-
-       HANYA TAMPILANNYA
-       YANG DIKECILKAN.
     ========================== */
 
     function updatePreviewScale() {
@@ -1614,11 +1363,6 @@
         );
 
 
-      /*
-        Ukuran asli invoice
-        dalam pixel.
-      */
-
       const invoiceWidth =
         invoice.offsetWidth;
 
@@ -1627,18 +1371,8 @@
         invoice.offsetHeight;
 
 
-
-      /*
-        Lebar area preview.
-
-        Bukan window.innerWidth,
-        supaya HP dan desktop
-        lebih akurat.
-      */
-
       const availableWidth =
         previewArea.clientWidth - 20;
-
 
 
       let scale =
@@ -1646,24 +1380,9 @@
         invoiceWidth;
 
 
-
-      /*
-        Jangan lebih besar
-        dari ukuran asli.
-      */
-
       scale =
-        Math.min(
-          scale,
-          1
-        );
+        Math.min(scale, 1);
 
-
-
-      /*
-        Wrapper mengikuti
-        hasil ukuran preview.
-      */
 
       wrapper.style.width =
         `${invoiceWidth * scale}px`;
@@ -1673,21 +1392,14 @@
         `${invoiceHeight * scale}px`;
 
 
-
-      /*
-        Hanya preview
-        yang berubah.
-      */
-
       invoice.style.transform =
         `scale(${scale})`;
 
     }
 
 
-
     /* =========================
-       RENDER FORM ITEMS
+       RENDER ITEM FORM
     ========================== */
 
     function renderItemForm() {
@@ -1696,222 +1408,178 @@
         $("itemsContainer");
 
 
-      container.innerHTML =
-        "";
+      container.innerHTML = "";
 
 
-      items.forEach(
-        (item) => {
+      items.forEach((item) => {
 
 
-          const card =
-            document.createElement(
-              "div"
-            );
+        const card =
+          document.createElement("div");
 
 
-          card.className =
-            "item-card";
+        card.className =
+          "item-card";
 
 
+        card.innerHTML = `
 
-          card.innerHTML = `
+          <button
+            class="remove-item"
+            data-id="${item.id}"
+            type="button"
+          >
+            ×
+          </button>
 
-            <button
-              class="remove-item"
+
+          <div class="field">
+
+            <label>
+              Item Name
+            </label>
+
+            <input
+              type="text"
               data-id="${item.id}"
-              type="button"
+              data-field="name"
+              value="${item.name}"
             >
-              ×
-            </button>
+
+          </div>
+
+
+          <div class="row-2">
 
 
             <div class="field">
 
               <label>
-                Item Name
+                Quantity
               </label>
 
               <input
-                type="text"
+                type="number"
+                min="0"
                 data-id="${item.id}"
-                data-field="name"
-                value="${item.name}"
+                data-field="quantity"
+                value="${item.quantity}"
               >
 
             </div>
 
 
-            <div class="row-2">
+            <div class="field">
 
+              <label>
+                Unit Price
+              </label>
 
-              <div class="field">
-
-                <label>
-                  Quantity
-                </label>
-
-                <input
-                  type="number"
-                  min="0"
-                  data-id="${item.id}"
-                  data-field="quantity"
-                  value="${item.quantity}"
-                >
-
-              </div>
-
-
-
-              <div class="field">
-
-                <label>
-                  Unit Price
-                </label>
-
-                <input
-                  type="number"
-                  min="0"
-                  data-id="${item.id}"
-                  data-field="price"
-                  value="${item.price}"
-                >
-
-              </div>
-
+              <input
+                type="number"
+                min="0"
+                data-id="${item.id}"
+                data-field="price"
+                value="${item.price}"
+              >
 
             </div>
 
-          `;
+
+          </div>
+
+        `;
 
 
-          container.appendChild(
-            card
+        container.appendChild(card);
+
+      });
+
+
+      document
+        .querySelectorAll("[data-field]")
+        .forEach((input) => {
+
+
+          input.addEventListener(
+            "input",
+            function () {
+
+
+              const id =
+                Number(
+                  this.dataset.id
+                );
+
+
+              const field =
+                this.dataset.field;
+
+
+              const item =
+                items.find(
+                  item => item.id === id
+                );
+
+
+              if (!item) {
+                return;
+              }
+
+
+              if (field === "name") {
+
+                item.name =
+                  this.value;
+
+              } else {
+
+                item[field] =
+                  Number(this.value);
+
+              }
+
+
+              updatePreview();
+
+            }
           );
 
-        }
-      );
+        });
 
-
-
-      /*
-        INPUT ITEMS
-      */
 
       document
-        .querySelectorAll(
-          "[data-field]"
-        )
-        .forEach(
-          (input) => {
+        .querySelectorAll(".remove-item")
+        .forEach((button) => {
 
 
-            input.addEventListener(
-              "input",
-              function () {
+          button.addEventListener(
+            "click",
+            function () {
 
 
-                const id =
-                  Number(
-                    this.dataset.id
-                  );
+              const id =
+                Number(
+                  this.dataset.id
+                );
 
 
-                const field =
-                  this.dataset.field;
+              items =
+                items.filter(
+                  item => item.id !== id
+                );
 
 
-                const item =
-                  items.find(
-                    item =>
-                      item.id === id
-                  );
+              renderItemForm();
 
+              updatePreview();
 
-                if (!item) {
-                  return;
-                }
+            }
+          );
 
-
-
-                if (
-                  field === "name"
-                ) {
-
-                  item.name =
-                    this.value;
-
-                }
-
-                else {
-
-                  item[field] =
-                    Number(
-                      this.value
-                    );
-
-                }
-
-
-                updatePreview();
-
-              }
-            );
-
-          }
-        );
-
-
-
-      /*
-        REMOVE ITEM
-      */
-
-      document
-        .querySelectorAll(
-          ".remove-item"
-        )
-        .forEach(
-          (button) => {
-
-
-            button.addEventListener(
-              "click",
-              function () {
-
-
-                if (
-                  items.length === 1
-                ) {
-                  return;
-                }
-
-
-                const id =
-                  Number(
-                    this.dataset.id
-                  );
-
-
-                items =
-                  items.filter(
-                    item =>
-                      item.id !== id
-                  );
-
-
-                renderItemForm();
-
-                updatePreview();
-
-              }
-            );
-
-          }
-        );
+        });
 
     }
-
 
 
     /* =========================
@@ -1926,20 +1594,15 @@
 
           items.push({
 
-            id:
-              itemId++,
+            id: itemId++,
 
-            name:
-              "",
+            name: "",
 
-            quantity:
-              1,
+            quantity: 1,
 
-            price:
-              0
+            price: 0
 
           });
-
 
 
           renderItemForm();
@@ -1948,7 +1611,6 @@
 
         }
       );
-
 
 
     /* =========================
@@ -1960,8 +1622,7 @@
 
       $("previewInvoiceNumber")
         .textContent =
-          $("invoiceNumber").value ||
-          "-";
+          $("invoiceNumber").value || "-";
 
 
       $("previewDate")
@@ -1973,8 +1634,7 @@
 
       $("previewBillTo")
         .textContent =
-          $("billTo").value ||
-          "-";
+          $("billTo").value || "-";
 
 
       $("previewAddress")
@@ -1984,16 +1644,14 @@
 
       $("previewBank")
         .textContent =
-          $("bankName").value ||
-          "-";
+          $("bankName").value || "-";
 
 
       $("previewAccountName")
         .textContent =
           "Account Name : " +
           (
-            $("accountName").value ||
-            "-"
+            $("accountName").value || "-"
           );
 
 
@@ -2001,8 +1659,7 @@
         .textContent =
           "Account No : " +
           (
-            $("accountNumber").value ||
-            "-"
+            $("accountNumber").value || "-"
           );
 
 
@@ -2012,7 +1669,6 @@
 
       const contactName =
         $("contactName").value;
-
 
 
       $("previewPhone")
@@ -2027,95 +1683,70 @@
           );
 
 
-
-      /*
-        RENDER TABLE
-      */
+      /* TABLE */
 
       const tbody =
         $("previewItems");
 
 
-      tbody.innerHTML =
-        "";
+      tbody.innerHTML = "";
 
 
       let subtotal = 0;
 
 
-
-      items.forEach(
-        (item) => {
+      items.forEach((item) => {
 
 
-          const total =
+        const total =
 
-            (item.quantity || 0) *
+          (item.quantity || 0) *
 
-            (item.price || 0);
-
-
-
-          subtotal +=
-            total;
+          (item.price || 0);
 
 
-
-          const row =
-            document.createElement(
-              "tr"
-            );
+        subtotal += total;
 
 
-
-          row.innerHTML = `
-
-            <td>
-              ${item.name || "-"}
-            </td>
-
-            <td>
-              ${item.quantity || 0}
-            </td>
-
-            <td>
-              ${formatRupiah(item.price)}
-            </td>
-
-            <td>
-              ${formatRupiah(total)}
-            </td>
-
-          `;
+        const row =
+          document.createElement("tr");
 
 
-          tbody.appendChild(
-            row
-          );
+        row.innerHTML = `
 
-        }
-      );
+          <td>
+            ${item.name || "-"}
+          </td>
 
+          <td>
+            ${item.quantity || 0}
+          </td>
+
+          <td>
+            ${formatRupiah(item.price)}
+          </td>
+
+          <td>
+            ${formatRupiah(total)}
+          </td>
+
+        `;
+
+
+        tbody.appendChild(row);
+
+      });
 
 
       $("previewSubtotal")
         .textContent =
-          formatRupiah(
-            subtotal
-          );
+          formatRupiah(subtotal);
 
 
       $("previewTotal")
         .textContent =
-          formatRupiah(
-            subtotal
-          );
+          formatRupiah(subtotal);
 
-
-      /*
-        Update scale
-        setelah isi berubah.
-      */
 
       requestAnimationFrame(
         updatePreviewScale
@@ -2124,9 +1755,8 @@
     }
 
 
-
     /* =========================
-       GENERAL INPUT LISTENER
+       FORM LISTENERS
     ========================== */
 
     [
@@ -2150,19 +1780,15 @@
       "contactName"
 
     ]
-      .forEach(
-        (id) => {
+      .forEach((id) => {
 
+        $(id)
+          .addEventListener(
+            "input",
+            updatePreview
+          );
 
-          $(id)
-            .addEventListener(
-              "input",
-              updatePreview
-            );
-
-        }
-      );
-
+      });
 
 
     /* =========================
@@ -2183,10 +1809,7 @@
             button.textContent;
 
 
-
-          button.disabled =
-            true;
-
+          button.disabled = true;
 
           button.textContent =
             "Generating PDF...";
@@ -2199,39 +1822,20 @@
               $("invoicePaper");
 
 
-            /*
-              SIMPAN SCALE PREVIEW.
-            */
-
             const originalTransform =
               invoice.style.transform;
 
 
-
-            /*
-              HILANGKAN SCALE.
-
-              Sekarang html2canvas
-              mengambil A4 ASLI.
-            */
+            /* Hapus scale preview */
 
             invoice.style.transform =
               "none";
 
 
-
-            /*
-              Tunggu render.
-            */
-
             await new Promise(
               resolve =>
-                setTimeout(
-                  resolve,
-                  150
-                )
+                setTimeout(resolve, 200)
             );
-
 
 
             const canvas =
@@ -2250,27 +1854,16 @@
                     invoice.offsetWidth,
 
                   height:
-                    invoice.offsetHeight,
-
-                  windowWidth:
-                    invoice.offsetWidth,
-
-                  windowHeight:
                     invoice.offsetHeight
 
                 }
               );
 
 
-
-            /*
-              KEMBALIKAN
-              PREVIEW SCALE.
-            */
+            /* Kembalikan preview */
 
             invoice.style.transform =
               originalTransform;
-
 
 
             const imageData =
@@ -2285,27 +1878,19 @@
               window.jspdf;
 
 
-
-            /*
-              PDF A4 PERSIS.
-            */
-
             const pdf =
-              new jsPDF(
-                {
+              new jsPDF({
 
-                  orientation:
-                    "portrait",
+                orientation:
+                  "portrait",
 
-                  unit:
-                    "mm",
+                unit:
+                  "mm",
 
-                  format:
-                    "a4"
+                format:
+                  "a4"
 
-                }
-              );
-
+              });
 
 
             pdf.addImage(
@@ -2323,31 +1908,20 @@
             );
 
 
-
             const invoiceNumber =
-
               $("invoiceNumber").value ||
-
               "invoice";
 
 
-
             pdf.save(
-
               `invoice-${invoiceNumber}.pdf`
-
             );
 
 
-          }
+          } catch (error) {
 
 
-          catch (error) {
-
-
-            console.error(
-              error
-            );
+            console.error(error);
 
 
             alert(
@@ -2355,10 +1929,7 @@
             );
 
 
-          }
-
-
-          finally {
+          } finally {
 
 
             button.disabled =
@@ -2374,16 +1945,13 @@
       );
 
 
-
     /* =========================
        INITIAL LOAD
     ========================== */
 
     renderItemForm();
 
-
     updatePreview();
-
 
 
     window.addEventListener(
@@ -2399,13 +1967,13 @@
     );
 
 
-
     window.addEventListener(
       "resize",
       updatePreviewScale
     );
 
   </script>
+
 
 </body>
 </html>
